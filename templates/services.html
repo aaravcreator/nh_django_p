@@ -24,5 +24,18 @@
 
     </form>
 
+    {{message}}
+
+    <h2>List of Person</h2>
+
+    {% for person in person_list %}
+
+        <h3>NAME : {{person.name}}</h3>
+        <h4>PHONE : {{person.phone}} </h4>
+        <h5>EMAIL : {{person.email}} </h5>
+        <hr>
+
+    {% endfor %}
+
 </body>
 </html>

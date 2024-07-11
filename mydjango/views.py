@@ -32,9 +32,37 @@ def contact(request):
 
     return render(request,'contact.html',context)
 
+
+person_list = [
+    {
+        'name':"HARI SHARMA",
+        'phone':"94949329",
+        'email':"test@gmail.com"
+    }
+
+]
 def services(request):
-    print(request.GET.get('fullname'))
-    return render(request,'services.html')
+    name = request.GET.get('fullname')
+    email = request.GET.get('email')
+    phone = request.GET.get('phone')
+
+    if (name != None and name != "") and (email != None and email != "") and (phone != None and phone !=""):
+        message = f" Thank you for contacting us, your details are Name:{name}, Email:{email},Phone:{phone}"
+        person_data = {
+             'name':name,
+        'phone':phone,
+        'email':email
+        } 
+        person_list.append(person_data)
+
+    else:
+        message = ""
+    context = {
+        'message':message,
+        'person_list':person_list
+    }
+
+    return render(request,'services.html',context)
 
 # def dynamic(request,name):
 #     print(name)
