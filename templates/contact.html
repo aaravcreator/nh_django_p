@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Contact Us</title>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <h2>{{name}}</h2>
+    {% if display_email %}
+
+
+
+    <h2>Email : {{email}}</h2>
+
+   
+
+    {% else %}
+    <h2>Email is hidden</h2>
+
+    {% endif %}
+
+    
+    <h2>Phone : {{phone}}</h2>
+    <h2>{{alternate_numbers}}</h2>
+
+{% comment %}
+
+    {% for number in alternate_numbers %}
+        <h3>{{number}}</h3>
+        <hr>
+    {% endfor %}
+
+   {% endcomment %}
+
+
+
+    
+
+
+   <img src="{% static 'images/react.png' %}" height="500px" width="500px" alt="react slide">
+
+
+
+
+
+   <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
