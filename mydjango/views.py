@@ -2,8 +2,15 @@ from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render
 import random
 
+from myapp.models import Person
+
 
 def index(request):
+
+    persons = Person.objects.all()
+    for person in persons:
+        print(person)
+
     print("INDEX CALLED")
     data = random.randint(0,50)
     return HttpResponse(f"HELLO FROM DJANGO!! {data}")
