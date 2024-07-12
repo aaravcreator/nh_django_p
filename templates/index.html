@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person List</title>
+</head>
+<body>
+    <h1>List of Person</h1>
+    <a href="{% url 'createperson' %}">Add Person</a>
+    <br>
+    <h2>TOTAL PERSON : {{total_person}}</h2>
+    <hr>
+    {% for person in person_list %}
+    
+    <h2>ID : {{person.id}}</h2>
+    <h2>Name: {{person.name}}</h2>
+    <h2>Email: {{person.email}}</h2>
+    <h2>Phone : {{person.phone}}</h2>
+    <h2>Address : {{person.address}}</h2>
+    <hr>
+
+    {% endfor %}
+</body>
+</html>

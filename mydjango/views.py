@@ -4,16 +4,24 @@ import random
 
 from myapp.models import Person
 
-
 def index(request):
-
-    persons = Person.objects.all()
+    persons = Person.objects.all().order_by('-id') # use - for descending order
+    total_person = Person.objects.all().count()
+    # print(persons.query)
+    print(persons)
     for person in persons:
-        print(person)
+        print(person.name)
+        print(person.phone)
+        print(person.email)
 
     print("INDEX CALLED")
     data = random.randint(0,50)
-    return HttpResponse(f"HELLO FROM DJANGO!! {data}")
+
+    context ={
+        'person_list':persons,
+        'total_person':total_person
+    }
+    return render(request,'index.html',context)
 
 def about(request):
 
