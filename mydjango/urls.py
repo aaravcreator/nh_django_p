@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from mydjango.views import *
 
 urlpatterns = [
@@ -30,5 +33,4 @@ urlpatterns = [
     path('dynamic/<str:name>/',dynamic),
     # add/45/55/  => sum of 45 and 55 is 100
     path('add/<int:num1>/<int:num2>/',add),
-
-]
+]+static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)

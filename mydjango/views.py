@@ -1,11 +1,21 @@
 from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render
 import random
-
+from django.db.models import Q
 from myapp.models import Person
 
+
 def index(request):
-    persons = Person.objects.all().order_by('-id') # use - for descending order
+    if not  request.user.is_authenticated:
+        return HttpResponse('You cannot access the page')
+
+    query = request.GET.get('query')
+
+    if query is not None and query != "":
+        persons = Person.objects.filter(Q(name__icontains=query ) | Q(phone__icontains=query))
+    else:
+        persons = Person.objects.all().order_by('-id') # use - for descending order
+    
     total_person = Person.objects.all().count()
     # print(persons.query)
     print(persons)
@@ -25,7 +35,7 @@ def index(request):
 
 def about(request):
 
-    return render(request,'about.html')
+    return render(request,'base.html')
     
 def contact(request):
     name = "DJANGO SITE"

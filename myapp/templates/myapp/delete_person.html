@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Person</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Edit Person</h1>
+    
+    <h1>Do you want to delete Person -> {{person.name}} ?</h1>
 
-
-   
-    <form action="" method="POST">
+    <form action="" method="post">
         {% csrf_token %}
 
-        {{form}}
-        <button type="submit">Create Person</button>
+        <button type="submit">Delete!</button>
+
     </form>
+
 
 </body>
 </html>

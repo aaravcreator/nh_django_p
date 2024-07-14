@@ -37,3 +37,20 @@ def edit_person(request,id):
 
     return render(request,'myapp/edit_person.html',context)
 
+
+
+def delete_person(request,id):
+    # Delete using GET request
+    person = Person.objects.get(id=id)
+
+    if request.method == "POST":
+        person.delete()
+        return redirect('/')
+    # person.delete() # delete the person from database
+    
+    context = {
+        'person':person
+    }
+    return render(request,'myapp/delete_person.html',context)
+
+

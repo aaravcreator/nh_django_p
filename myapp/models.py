@@ -6,7 +6,7 @@ class Person(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=10)
     address = models.CharField(max_length=255,null=True,blank=True)
-
+    photo = models.ImageField(null=True)
 
 
     def __str__(self):
